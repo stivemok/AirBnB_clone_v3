@@ -11,7 +11,19 @@ from models.user import User
 from api.v1.views import app_views
 
 
-@app_views.route('/stats')
+@app_views.route('/', methods=['GET'], strict_slash=False)
+def Hello_world():
+    '''Gets the status of the API'''
+    return ("Hello_world")
+
+
+@app_views.route('/status', methods=['GET'], strict_slash=False)
+def get_status():
+    '''Gets the status of the API'''
+    return jsonify({"status": "OK"})
+
+
+@app_views.route('/stats', methods=['GET'], strict_slash=False)
 def get_stats():
     """retrives the number of each objects by type"""
     objects = {
